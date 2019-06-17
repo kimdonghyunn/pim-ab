@@ -1,5 +1,0 @@
-uid	upw	uname	1234
-egyou	pw	이름 변경	1357
-아이디	암호	name1221	1245
-egyou12	pw	이름 변경	7777
-induk	induk	induk	7788

@@ -3,59 +3,96 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="790.0" stylesheets="@member.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MemberViewController">
+<AnchorPane id="memberAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" stylesheets="@member.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MemberViewController">
    <children>
-      <Label layoutX="190.0" layoutY="521.0" text="Copyright. @2019 EGYOU" textFill="#422bb5">
-         <font>
-            <Font name="System Italic" size="14.0" />
-         </font>
-      </Label>
-      <GridPane layoutX="18.0" layoutY="25.0" prefHeight="124.0" prefWidth="364.0">
+      <GridPane layoutX="18.0" layoutY="25.0" prefHeight="252.0" prefWidth="219.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.0" minWidth="10.0" prefWidth="76.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="143.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="아이디" />
-            <Label text="암호" GridPane.rowIndex="1" />
-            <Label text="이름" GridPane.rowIndex="2" />
-            <Label text="연락처" GridPane.rowIndex="3" />
-            <TextField fx:id="tfID" GridPane.columnIndex="1" />            
-            <PasswordField fx:id="tfPW" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="이메일">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label text="암호" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <Label text="이름" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="tfEmail" promptText="필수항목" GridPane.columnIndex="1" />            
+            <PasswordField fx:id="tfPw" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="tfName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="tfContact" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="생년월일" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="tfBirth" promptText="(형식:19900101)" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="주소" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="tfAddress" promptText="권역별" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="연락처" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Label>
+            <TextField fx:id="tfContact" promptText="휴대폰(- 없이)" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
-      <Button id="btnCrete" fx:id="btnCreate" layoutX="14.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#handleCreate" text="등록" />
-      <Button id="btnUpdate" fx:id="btnUpdate" layoutX="78.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#handleUpdate" text="수정" />
-      <Button id="btnDelete" fx:id="btnDelete" layoutX="142.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#handleDelete" text="삭제" />
+            <Button id="btnRegister" fx:id="btnCreate" layoutX="16.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#handleCreate" prefHeight="29.0" prefWidth="65.0" text="등록" />
+      <Button id="btnUpdate" fx:id="btnUpdate" layoutX="96.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#handleUpdate" prefHeight="29.0" prefWidth="65.0" text="수정" />
+      <Button id="btnDelete" fx:id="btnDelete" layoutX="175.0" layoutY="336.0" mnemonicParsing="false" onMouseClicked="#handleDelete" prefHeight="29.0" prefWidth="65.0" text="삭제" />
       
-      <TableView fx:id="tableViewMember" layoutX="18.0" layoutY="207.0" prefHeight="306.0" prefWidth="364.0">
+      <TableView fx:id="tableViewMember" layoutX="251.0" layoutY="25.0" prefHeight="424.0" prefWidth="685.0">
         <columns>
-          <TableColumn fx:id="columnID" prefWidth="66.0" text="아이디" />
-          <TableColumn fx:id="columnPW" prefWidth="65.0" text="암호" />
-            <TableColumn fx:id="columnName" prefWidth="77.0" text="이름" />
-            <TableColumn fx:id="columnContact" prefWidth="149.0" text="연락처" />
+          <TableColumn fx:id="columnEmail" minWidth="100.0" prefWidth="114.0" text="아이디" />
+          <TableColumn fx:id="columnPw" prefWidth="45.0" text="암호" />
+            <TableColumn fx:id="columnName" prefWidth="75.0" text="이름" />
+            <TableColumn fx:id="columnBirth" minWidth="100.0" prefWidth="115.0" text="생년월일" />
+            <TableColumn fx:id="columnAge" prefWidth="57.0" text="나이" />
+            <TableColumn fx:id="columnAddress" prefWidth="94.0" text="주소" />
+            <TableColumn fx:id="columnContact" minWidth="100.0" prefWidth="108.0" text="연락처" />
+            <TableColumn fx:id="columnGender" prefWidth="67.0" text="성별" />
         </columns>
       </TableView>
-      <Button fx:id="btnExecute" layoutX="720.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#handleExecute" text="실행" />
-      <TextArea fx:id="taExecute" layoutX="412.0" layoutY="53.0" prefHeight="462.0" prefWidth="364.0" />
-      <TextField fx:id="tfExecute" layoutX="412.0" layoutY="23.0" prefHeight="23.0" prefWidth="199.0" promptText="입력" />
+      <TextArea fx:id="taFindResult" layoutX="18.0" layoutY="460.0" minWidth="-Infinity" prefHeight="147.0" prefWidth="918.0" />
+      <TextField fx:id="tfFindCondition" layoutX="18.0" layoutY="384.0" prefHeight="29.0" prefWidth="153.0" promptText="검색조건" />
+      <Button fx:id="btnFindByName" layoutX="98.0" layoutY="420.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" text="이름" />
+      <Button fx:id="btnFindByAddress" layoutX="18.0" layoutY="420.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="65.0" text="주소" />
+      <Label layoutX="297.0" layoutY="607.0" prefHeight="21.0" prefWidth="360.0" text="Copyright. @2019 김진혁 (201612014)" textFill="#422bb5">
+         <font>
+            <Font name="System Italic" size="18.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="male" layoutX="52.0" layoutY="296.0" mnemonicParsing="false" selected="true" text="남자">
+         <toggleGroup>
+            <ToggleGroup fx:id="Group" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="female" layoutX="146.0" layoutY="296.0" mnemonicParsing="false" text="여자" toggleGroup="$Group" />
    </children>
 </AnchorPane>
