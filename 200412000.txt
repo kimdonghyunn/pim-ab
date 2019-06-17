@@ -1,8 +1,11 @@
-comso4@induk.ac.kr	cometrue	컴소043	19940701	26	경기북부	029507634	여자
-comso5@induk.ac.kr	cometrue	컴소32	19950301	25	경기남부	029507635	남자
-comso6@induk.ac.kr	cometrue	컴소06	19960701	20	경기남부	029507636	여자
-comso7@induk.ac.kr	cometrue	컴소07	19970301	20	그외지역	029507637	남자
-comso12@induk.ac.kr	cometrue	컴소012	19910301	29	서울북부	029507631	여자
-comso21@induk.ac.kr	cometrue	컴소012	19910301	29	서울북부	029507631	남자
-comso36@induk.ac.kr	cometrue	컴소06	19960701	24	경기남부	029507636	남자
-co2mso36@induk.ac.kr	cometrue	컴소06	19960701	24	경기남부	029507636	남자
+comso4@induk.ac.kr	cometrue	컴소043	19940701	26	경기북부	029507634	여자	인간	짐승
+comso5@induk.ac.kr	cometrue	컴소32	19950301	25	경기남부	029507635	남자	짐승	인간
+comso6@induk.ac.kr	cometrue	컴소06	19960701	20	경기남부	029507636	여자	짐승	인간
+comso7@induk.ac.kr	cometrue	컴소07	19970301	20	그외지역	029507637	남자	짐승	인간
+comso12@induk.ac.kr	cometrue	컴소012	19910301	29	서울북부	029507631	여자	짐승	인간
+comso21@induk.ac.kr	cometrue	컴소012	19910301	29	서울북부	029507631	남자	인간	짐승
+comso36@induk.ac.kr	cometrue	컴소06	19960701	24	경기남부	029507636	남자	인간	짐승
+co2mso36@induk.ac.kr	cometrue	컴소06	19960701	24	경기남부	029507636	남자	짐승	인간
+coms2o4@induk.ac.kr	cometrue	컴소043	19940701	26	경기북부	029507634	여자	인간	짐승
+crackmaker@naver.com	1234	김동현	19960215	24	경기북부	029507634	남자	짐승	인간
+naver@naver.com	ah	기말고사	19950215	25	서울북부	010434343	남자	인간	짐승

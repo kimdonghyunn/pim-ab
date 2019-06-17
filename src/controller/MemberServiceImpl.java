@@ -73,4 +73,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.searchByName(Name);
 	}
 
+	@Override
+	public List<Member> findByAnimal(String Animal) {
+		// TODO Auto-generated method stub
+		return memberDAO.searchByAnimal(Animal);
+	}
+
 }

@@ -61,6 +61,18 @@ public class MemberDAO {
 		return searched;
 	}
 	
+	public List<Member> searchByAnimal(String Animal) { 
+		// 검색 결과를 저장할 ArrayList 형 객체 생성
+		List<Member> searched = new ArrayList<Member>();
+		for(Member m : memberList) {
+			if(m.getAnimal().equals(Animal)) {
+				searched.add(m); // 검색된 정보를 추가함
+			}
+			// 검색이 안된 경우 스킵
+		}				
+		return searched;
+	}
+	
 	public int searchByID(Member member) { 
 		int ret = -1; // ret가 0 이상이면 검색 성공, -1 이면 검색 실패
 		int index = 0;

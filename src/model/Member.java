@@ -12,17 +12,20 @@ public class Member { // DB의 레코드와 매핑되는 객체
 	private StringProperty address; // 서울북부, 서울남부, 경기북부, 경기남부, 인천, 그외지역
 	private StringProperty contact;
 	private StringProperty gender;
+	private StringProperty human;
+	private StringProperty animal;
+
 	
 	/*
     private final IntegerProperty zipcode;
     private ObjectProperty<LocalDate> birthday;
 	*/
 	public Member() {
-		this(" ", " ", " ", " ", " ", " ", " ", " ");
+		this(" ", " ", " ", " ", " ", " ", " ", " "," "," ");
 	}
 	
 	public Member(String email, String pw, String name, String birth,
-			String age, String address, String contact, String gender) {
+			String age, String address, String contact, String gender,String human,String animal) {
 		this.email = new SimpleStringProperty(email);
 		this.pw = new SimpleStringProperty(pw);
 		this.name = new SimpleStringProperty(name);
@@ -31,6 +34,8 @@ public class Member { // DB의 레코드와 매핑되는 객체
 		this.address = new SimpleStringProperty(address);
 		this.contact = new SimpleStringProperty(contact);
 		this.gender = new SimpleStringProperty(gender);
+		this.human=new SimpleStringProperty(human);
+		this.animal=new SimpleStringProperty(animal);
 	}
 
 	public String getEmail() {
@@ -113,5 +118,27 @@ public class Member { // DB의 레코드와 매핑되는 객체
 	}
     public StringProperty genderProperty() {
         return gender;
+    }
+    
+
+    public String getHuman() {
+		return this.human.get();
+	}	
+	public void setHuman(String human) {
+		this.human.set(human);
+	}
+    public StringProperty humanProperty() {
+        return human;
+    }
+    
+
+    public String getAnimal() {
+		return this.animal.get();
+	}	
+	public void setAnimal(String animal) {
+		this.animal.set(animal);
+	}
+    public StringProperty animalProperty() {
+        return animal;
     }
 }

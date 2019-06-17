@@ -24,7 +24,9 @@ public class MemberFileWriter {
 				fw.write(m.getAge() + "\t");			// 자동 계산, 수정이 필요함
 				fw.write(m.getAddress() + "\t");
 				fw.write(m.getContact() + "\t");	
-				fw.write(m.getGender() + "\n");
+				fw.write(m.getGender() + "\t");
+				fw.write(m.getHuman() + "\t");
+				fw.write(m.getAnimal() + "\n");
 				fw.flush();
 			} catch (IOException e) {
 			}			

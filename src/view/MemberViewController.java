@@ -31,10 +31,14 @@ public class MemberViewController implements Initializable {
 	
 	@FXML	private RadioButton male;
 	@FXML	private RadioButton female;
+	
+	@FXML	private RadioButton human;
+	@FXML	private RadioButton animal;
 
 	@FXML	private TextArea taFindResult;
 	@FXML	private Button btnFindByName;
 	@FXML	private Button btnFindByAddress;
+	@FXML	private Button btnFindByAnimal;
 	@FXML	private TextField tfFindCondition;
 	
 	@FXML	private TextField tfEmail;
@@ -43,6 +47,8 @@ public class MemberViewController implements Initializable {
 	@FXML	private TextField tfBirth;
 	@FXML	private TextField tfAddress;
 	@FXML	private TextField tfContact;
+	@FXML	private TextField tfAnimal;
+
 	
 	@FXML 	private TableView<Member> tableViewMember;
 	@FXML	private TableColumn<Member, String> columnEmail;
@@ -53,6 +59,10 @@ public class MemberViewController implements Initializable {
 	@FXML	private TableColumn<Member, String> columnAddress;
 	@FXML	private TableColumn<Member, String> columnContact;
 	@FXML	private TableColumn<Member, String> columnGender;
+	@FXML	private TableColumn<Member, String> columnHuman;
+	@FXML	private TableColumn<Member, String> columnAnimal;
+
+
 	
 	// Member : model이라고도 하고 DTO, VO 라고도 함
 	// 시스템 밖에 저장된 정보를 객체들간에 사용하는 정보로 변환한 자료구조 또는 객체
@@ -79,6 +89,11 @@ public class MemberViewController implements Initializable {
 		columnAddress.setCellValueFactory(cvf -> cvf.getValue().addressProperty());
 		columnContact.setCellValueFactory(cvf -> cvf.getValue().contactProperty());
 		columnGender.setCellValueFactory(cvf -> cvf.getValue().genderProperty());
+		columnHuman.setCellValueFactory(cvf -> cvf.getValue().humanProperty());
+		columnAnimal.setCellValueFactory(cvf -> cvf.getValue().animalProperty());
+
+
+		
 		
 		tableViewMember.getSelectionModel().selectedItemProperty().addListener(
 				(observable, oldValue, newValue) -> showMemberInfo(newValue));
@@ -89,6 +104,8 @@ public class MemberViewController implements Initializable {
 		
 		btnFindByAddress.setOnMouseClicked(event -> handleFindByAddress());	
 		btnFindByName.setOnMouseClicked(event -> handleFindByName());
+		btnFindByAnimal.setOnMouseClicked(event -> handleFindByAnimal());
+
 		
 		loadMemberTableView();
 	}
@@ -101,11 +118,18 @@ public class MemberViewController implements Initializable {
 			tfBirth.setText(member.getBirth());
 			tfAddress.setText(member.getAddress());
 			tfContact.setText(member.getContact());
+			tfAnimal.setText(member.getAnimal());
+
 			
 			if(member.getGender().equals("남자"))
 				male.setSelected(true);
 			else
 				female.setSelected(true);
+			
+			if(member.getHuman().equals("인간"))
+				human.setSelected(true);
+			else
+				animal.setSelected(true);
 			/*
 			 * if(member.getGender().equals("남자"))
 				System.out.println(" MALE True");
@@ -150,6 +174,13 @@ public class MemberViewController implements Initializable {
 		else
 			return "여자";
 	}
+	private String human()
+	{
+		if(human.isSelected())
+			return "인간";
+		else
+			return "짐승";
+	}
 	@FXML 
 	private void handleFindByAddress() {
 		String condition = tfFindCondition.getText();
@@ -189,14 +220,28 @@ public class MemberViewController implements Initializable {
 	}
 	
 	@FXML 
-	private void handleCreate() { // event source, listener, handler
-		if(gender().equals("남자"))
-			System.out.println("남자");
+	private void handleFindByAnimal() {
+		String condition = tfFindCondition.getText();
+		taFindResult.setText("");
+		if(condition.length() > 0) {
+			List<Member> searched = memberService.findByAnimal(condition);
+			if(searched.size() > 0) {
+				int no = 1;
+				for(Member m : searched) {
+					taFindResult.appendText(no++ + " ) " + m.getAddress() + " : " + m.getEmail() + " : " + m.getName() + " \n");
+				}
+			}
+			else
+				taFindResult.setText("검색 조건에 맞는 정보가 없습니다.");
+		}
 		else
-			System.out.println("여자");
-		
+			this.showAlert("검색 조건을 입력하십시요");			
+	}
+	
+	@FXML 
+	private void handleCreate() { // event source, listener, handle
 		Member newMember = new Member(tfEmail.getText(), tfPw.getText(), tfName.getText(), 
-				tfBirth.getText(), ageMaker(), tfAddress.getText(), tfContact.getText(), gender());
+				tfBirth.getText(), ageMaker(), tfAddress.getText(), tfContact.getText(), gender(), human(),tfAnimal.getText());
 
 		int selectedIndex = tableViewMember.getSelectionModel().getSelectedIndex();
 		
@@ -218,7 +263,7 @@ public class MemberViewController implements Initializable {
 	@FXML 
 	private void handleUpdate() {
 		Member newMember = new Member(tfEmail.getText(), tfPw.getText(), tfName.getText(), 
-				tfBirth.getText(), ageMaker(), tfAddress.getText(), tfContact.getText(), gender());
+				tfBirth.getText(), ageMaker(), tfAddress.getText(), tfContact.getText(), gender(), human(),tfAnimal.getText());
 
 		int selectedIndex = tableViewMember.getSelectionModel().getSelectedIndex();
 		

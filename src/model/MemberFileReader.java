@@ -26,6 +26,8 @@ public class MemberFileReader {
 			m.setAddress(strArr[5]);
 			m.setContact(strArr[6]);
 			m.setGender(strArr[7]);
+			m.setHuman(strArr[8]);
+			m.setAnimal(strArr[9]);
 			retObj.add(m);			
 		}
 		return retObj;
